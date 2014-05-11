@@ -28,7 +28,7 @@
     }
   },
   "scripts": {
-    "test": "make test"
+    "test": "make coveralls"
   },
   "dependencies": {
     "pkginfo": "0.3.x",
