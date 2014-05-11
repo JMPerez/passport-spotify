@@ -1,4 +1,4 @@
-# Passport-Spotify [![Build Status](https://travis-ci.org/JMPerez/passport-spotify.svg?branch=master)](https://travis-ci.org/JMPerez/passport-spotify)
+# Passport-Spotify
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Spotify](http://www.spotify.com/)
 using the OAuth 2.0 API.
@@ -88,6 +88,10 @@ For a complete, working example, refer to the [login example](https://github.com
 
     $ npm install --dev
     $ make test
+    
+## Build and Coverage Status
+
+[![Build Status](https://travis-ci.org/JMPerez/passport-spotify.svg?branch=master)](https://travis-ci.org/JMPerez/passport-spotify) [![Coverage Status](https://coveralls.io/repos/JMPerez/passport-spotify/badge.png?branch=master)](https://coveralls.io/r/JMPerez/passport-spotify?branch=master)
 
 ## License
 
