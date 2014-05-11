@@ -1,0 +1,43 @@
+{
+  "name": "passport-spotify",
+  "version": "0.0.1",
+  "description": "Spotify authentication strategy for Passport.",
+  "author": {
+    "name": "José M. Pérez",
+    "url": "https://github.com/jmperez/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmperez/passport-spotify.git"
+  },
+  "keywords": [
+    "node",
+    "passport",
+    "spotify"
+  ],
+  "bugs": {
+    "url": "hhttps://github.com/jmperez/passport-spotify/issues"
+  },
+  "main": "./lib/passport-spotify",
+  "dependencies": {
+    "pkginfo": "0.3.x",
+    "passport-oauth": "0.1.x",
+    "querystring": "~0.2.0",
+    "util": "~0.10.3"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "//^(?!.*node_modules.*$).*lib//"
+    }
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "should": "~3.3.1",
+    "sinon": "~1.9.1",
+    "blanket": "~1.1.6",
+    "mocha-lcov-reporter": "0.0.1"
+  }
+}

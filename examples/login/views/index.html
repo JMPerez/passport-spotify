@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% if !user %}
+	<h2>Welcome! Please log in.</h2>
+	<p><a href="/login">login</a></p>
+{% else %}
+	<h2>Hello, {{ user.username }}.</h2>
+	<p>Your email is {{ user.emails[0].value }}</p>
+{% endif %}
+{% endblock %}
