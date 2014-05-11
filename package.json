@@ -19,7 +19,6 @@
     "url": "hhttps://github.com/jmperez/passport-spotify/issues"
   },
   "main": "./lib/passport-spotify",
-
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -42,6 +41,7 @@
     "should": "~3.3.1",
     "sinon": "~1.9.1",
     "blanket": "~1.1.6",
-    "mocha-lcov-reporter": "0.0.1"
+    "mocha-lcov-reporter": "0.0.1",
+    "coveralls": "~2.10.0"
   }
 }
