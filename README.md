@@ -22,17 +22,19 @@ and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which accepts
 these credentials and calls `done` providing a user, as well as `options`
 specifying a client ID, client secret, and callback URL.
 
-    passport.use(new SpotifyStrategy({
-        clientID: client_id,
-        clientSecret: client_secret,
-        callbackURL: "http://localhost:8888/auth/spotify/callback"
-      },
-      function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ spotifyId: profile.id }, function (err, user) {
-          return done(err, user);
-        });
-      }
-    ));
+```javascript
+passport.use(new SpotifyStrategy({
+    clientID: client_id,
+    clientSecret: client_secret,
+    callbackURL: "http://localhost:8888/auth/spotify/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ spotifyId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+```
 
 ### Authenticate Requests
 
