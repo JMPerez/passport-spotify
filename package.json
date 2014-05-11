@@ -19,12 +19,7 @@
     "url": "hhttps://github.com/jmperez/passport-spotify/issues"
   },
   "main": "./lib/passport-spotify",
-  "dependencies": {
-    "pkginfo": "0.3.x",
-    "passport-oauth": "0.1.x",
-    "querystring": "~0.2.0",
-    "util": "~0.10.3"
-  },
+
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -32,6 +27,15 @@
     "blanket": {
       "pattern": "//^(?!.*node_modules.*$).*lib//"
     }
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {
+    "pkginfo": "0.3.x",
+    "passport-oauth": "0.1.x",
+    "querystring": "~0.2.0",
+    "util": "~0.10.3"
   },
   "devDependencies": {
     "mocha": "~1.18.2",

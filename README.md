@@ -1,4 +1,4 @@
-# Passport-Spotify
+# Passport-Spotify [![Build Status](https://travis-ci.org/JMPerez/passport-spotify.svg?branch=master)](https://travis-ci.org/JMPerez/passport-spotify)
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Spotify](http://www.spotify.com/)
 using the OAuth 2.0 API.
