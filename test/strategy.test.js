@@ -83,24 +83,26 @@ describe('SpotifyStrategy', function() {
                 strategy._oauth2._request.restore();
             });
 
-            it('should use basic auth header', function() {
-                strategy._oauth2.getOAuthAccessToken('code', {}, undefined);
-
-                // checking oauth2._request arguments
-                // third argument is headers hash
-                // https://github.com/ciaranj/node-oauth/blob/301ebab90cde4c36ad1ac0bc7d814003f4e98432/lib/oauth2.js#L52
-                should.exist(strategy._oauth2._request.firstCall.args[2].Authorization);
-            });
-
             it('should authenticate using client id and client secret pair', function() {
                 strategy._oauth2.getOAuthAccessToken('code', {}, undefined);
 
-                var authHeader = strategy._oauth2._request.firstCall.args[2].Authorization;
-                var modelHeader = 'Basic ' +
-                    Buffer('' + strategy._oauth2._clientId + ':' + strategy._oauth2._clientSecret)
-                        .toString('base64');
+                function parseQueryString(query) {
+                    var returnObject = {};
+                    var vars = query.split('&');
+                    vars.forEach(function(variable) {
+                        var parts = variable.split('=');
+                        returnObject[parts[0]] = parts[1];
+                    });
+                    return returnObject;
+                }
 
-                authHeader.should.equal(modelHeader);
+                var data = {
+                    code: 'code',
+                    client_id: 'ABC123',
+                    client_secret: 'secret'
+                };
+
+                data.should.eql(parseQueryString(strategy._oauth2._request.firstCall.args[3]));
             });
         });
 
@@ -108,12 +110,13 @@ describe('SpotifyStrategy', function() {
             before(function() {
                 sinon.stub(strategy._oauth2, '_request', function(method, url, headers, post_body, access_token, callback) {
                     headers.should.eql({
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': 'Basic QUJDMTIzOnNlY3JldA=='
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     });
                     var data = JSON.stringify({
                         access_token: 'access_token',
                         refresh_token: 'refresh_token',
+                        client_id: 'ABC123',
+                        client_secret: 'secret',
                         something_random: 'randomness'
                     });
 
@@ -139,8 +142,7 @@ describe('SpotifyStrategy', function() {
             before(function() {
                 sinon.stub(strategy._oauth2, '_request', function(method, url, headers, post_body, access_token, callback) {
                     headers.should.eql({
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': 'Basic QUJDMTIzOnNlY3JldA=='
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     });
                     callback('something bad has happened');
                 });
