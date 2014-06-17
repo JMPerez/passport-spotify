@@ -9,6 +9,9 @@ unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
 
+For more information about Spotify's OAuth 2.0 implementation, check their 
+[Web API Authorization Guide](https://developer.spotify.com/web-api/authorization-guide/).
+
 ## Installation
 
     $ npm install passport-spotify
@@ -62,7 +65,7 @@ app.get('/auth/spotify/callback',
 
 ### Using scopes
 
-Depending on the data you want to fetch, you may want to specify custom scopes. For more information about scopes in the Spotify Web API check their developer site.
+Depending on the data you want to fetch, you may want to specify custom scopes. For more information about scopes in the Spotify Web API check [their developer site](https://developer.spotify.com/web-api/using-scopes/).
 
 By default, no scope is passed. That means that you won't fetch information such as display name, picture or email. You can get those by using these scopes:
 
