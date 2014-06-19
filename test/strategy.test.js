@@ -62,9 +62,9 @@ describe('SpotifyStrategy', function() {
             });
 
             it('should enforce user-read-private scope presence', function() {
-               strategy._scope.should.include('one');
-               strategy._scope.should.include('two');
-               strategy._scope.should.include('five');
+               strategy._scope.should.containEql('one');
+               strategy._scope.should.containEql('two');
+               strategy._scope.should.containEql('five');
             });
 
             it('should enforce whitespace separator', function() {

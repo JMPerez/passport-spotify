@@ -1,0 +1,7 @@
+node_modules/
+test
+examples
+.travis.yml
+.gitignore
+.npmignore
+Makefile
