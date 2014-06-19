@@ -87,6 +87,8 @@ app.get('/auth/spotify',
 
 For a complete, working example, refer to the [login example](https://github.com/jmperez/passport-spotify/tree/master/examples/login).
 
+You can get your keys on [Spotify -  My Applications](https://developer.spotify.com/my-applications).
+
 ## Tests
 
     $ npm install --dev
