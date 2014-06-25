@@ -16,7 +16,7 @@
     "spotify"
   ],
   "bugs": {
-    "url": "hhttps://github.com/jmperez/passport-spotify/issues"
+    "url": "https://github.com/jmperez/passport-spotify/issues"
   },
   "main": "./lib/passport-spotify",
   "engines": {
