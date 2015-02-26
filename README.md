@@ -83,6 +83,22 @@ app.get('/auth/spotify',
 });
 ```
 
+### Forcing login dialog
+
+You can force the login dialog using the `showDialog` parameter when authenticating:
+
+```javascript
+app.get('/auth/spotify',
+  passport.authenticate(
+    'spotify',
+    {scope: ['user-read-email', 'user-read-private'], showDialog: true}
+  ),
+  function(req, res){
+   // The request will be redirected to spotify for authentication, so this
+   // function will not be called.
+});
+```
+
 ## Examples
 
 For a complete, working example, refer to the [login example](https://github.com/jmperez/passport-spotify/tree/master/examples/login).

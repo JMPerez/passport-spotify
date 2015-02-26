@@ -48,15 +48,16 @@ describe('SpotifyStrategy', function() {
         });
 
         describe('array option', function() {
-            var strategy;
+            var strategy,
+                options = {
+                  clientID: 'ABC123',
+                  clientSecret: 'secret',
+                  scope: ['one', 'two', 'five'],
+                  showDialog: true
+                };
 
             before(function() {
-                strategy = new SpotifyStrategy(
-                  {
-                    clientID: 'ABC123',
-                    clientSecret: 'secret',
-                    scope: ['one', 'two', 'five']
-                  },
+                strategy = new SpotifyStrategy(options,
                   function() {}
                 );
             });
@@ -69,6 +70,10 @@ describe('SpotifyStrategy', function() {
 
             it('should enforce whitespace separator', function() {
                 strategy._scopeSeparator.should.equal(' ');
+            });
+
+            it('should add extra options if any', function() {
+                strategy.authorizationParams(options).should.eql({show_dialog: true});
             });
         });
     });
