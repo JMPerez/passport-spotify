@@ -9,8 +9,8 @@ var express = require('express'),
 
 var consolidate = require('consolidate');
 
-var appKey = "--client_id here--";
-var appSecret = "--client_secret here--";
+var appKey = '--client_id here--';
+var appSecret = '--client_secret here--';
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -85,7 +85,7 @@ app.get('/login', function(req, res){
 //   the user to spotify.com. After authorization, spotify will redirect the user
 //   back to this application at /auth/spotify/callback
 app.get('/auth/spotify',
-  passport.authenticate('spotify', {scope: 'user-read-email'}),
+  passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private'], showDialog: true}),
   function(req, res){
 // The request will be redirected to spotify for authentication, so this
 // function will not be called.
