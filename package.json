@@ -31,17 +31,17 @@
     "test": "make coveralls"
   },
   "dependencies": {
-    "pkginfo": "0.3.x",
+    "pkginfo": "~0.4.0",
     "passport-oauth": "1.0.0",
     "querystring": "~0.2.0",
     "util": "~0.10.3"
   },
   "devDependencies": {
-    "mocha": "1.20.1",
-    "should": "4.0.4",
-    "sinon": "1.10.2",
-    "blanket": "~1.1.6",
-    "mocha-lcov-reporter": "0.0.1",
-    "coveralls": "~2.10.0"
+    "mocha": "3.2.0",
+    "should": "11.1.2",
+    "sinon": "1.17.7",
+    "blanket": "~1.2.3",
+    "mocha-lcov-reporter": "1.2.0",
+    "coveralls": "~2.11.15"
   }
 }
