@@ -37,7 +37,7 @@
     "util": "~0.10.3"
   },
   "devDependencies": {
-    "mocha": "3.2.0",
+    "mocha": "3.3.0",
     "should": "11.2.1",
     "sinon": "2.0.0",
     "blanket": "~1.2.3",
