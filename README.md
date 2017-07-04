@@ -26,6 +26,8 @@ these credentials and calls `done` providing a user, as well as `options`
 specifying a client ID, client secret, and callback URL.
 
 ```javascript
+const SpotifyStrategy = require('passport-spotify').Strategy;
+
 passport.use(new SpotifyStrategy({
     clientID: client_id,
     clientSecret: client_secret,
