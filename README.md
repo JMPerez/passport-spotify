@@ -33,7 +33,7 @@ passport.use(new SpotifyStrategy({
     clientSecret: client_secret,
     callbackURL: "http://localhost:8888/auth/spotify/callback"
   },
-  function(accessToken, refreshToken, profile, done) {
+  function(accessToken, refreshToken, expires_in, profile, done) {
     User.findOrCreate({ spotifyId: profile.id }, function (err, user) {
       return done(err, user);
     });
