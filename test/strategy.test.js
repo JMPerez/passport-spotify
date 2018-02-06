@@ -120,6 +120,7 @@ describe('SpotifyStrategy', function() {
                     var data = JSON.stringify({
                         access_token: 'access_token',
                         refresh_token: 'refresh_token',
+                        expires_in: 'expires_in',
                         client_id: 'ABC123',
                         client_secret: 'secret',
                         something_random: 'randomness'
@@ -134,10 +135,11 @@ describe('SpotifyStrategy', function() {
             });
 
             it('should pass the data back', function(done) {
-                strategy._oauth2.getOAuthAccessToken('code', {}, function(err, accessToken, refreshToken, params) {
+                strategy._oauth2.getOAuthAccessToken('code', {}, function(err, accessToken, refreshToken, expires_in, params) {
                     should.not.exist(err);
                     accessToken.should.equal('access_token');
                     refreshToken.should.equal('refresh_token');
+                    expires_in.should.equal('expires_in');
                     done();
                 });
             });
