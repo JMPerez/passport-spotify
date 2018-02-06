@@ -30,14 +30,14 @@ passport.deserializeUser(function(obj, done) {
 
 // Use the SpotifyStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, and spotify
-//   profile), and invoke a callback with a user object.
+//   credentials (in this case, an accessToken, refreshToken, expires_in 
+//   and spotify profile), and invoke a callback with a user object.
 passport.use(new SpotifyStrategy({
   clientID: appKey,
   clientSecret: appSecret,
   callbackURL: 'http://localhost:8888/callback'
   },
-  function(accessToken, refreshToken, profile, done) {
+  function(accessToken, refreshToken, expires_in, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
       // To keep the example simple, the user's spotify profile is returned to
