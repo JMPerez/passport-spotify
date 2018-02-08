@@ -1,6 +1,6 @@
 {
   "name": "passport-spotify",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "Spotify authentication strategy for Passport.",
   "author": {
     "name": "José M. Pérez",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "mocha": "5.0.0",
-    "should": "13.0.0",
+    "should": "13.1.0",
     "sinon": "2.3.7",
     "blanket": "~1.2.3",
     "mocha-lcov-reporter": "1.3.0",
