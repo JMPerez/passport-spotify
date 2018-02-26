@@ -113,7 +113,7 @@ describe('SpotifyStrategy', function() {
 
         describe('on success', function() {
             before(function() {
-                sinon.stub(strategy._oauth2, '_request', function(method, url, headers, post_body, access_token, callback) {
+                sinon.stub(strategy._oauth2, '_request').callsFake(function(method, url, headers, post_body, access_token, callback) {
                     headers.should.eql({
                         'Content-Type': 'application/x-www-form-urlencoded'
                     });
@@ -147,7 +147,7 @@ describe('SpotifyStrategy', function() {
 
         describe('on error', function() {
             before(function() {
-                sinon.stub(strategy._oauth2, '_request', function(method, url, headers, post_body, access_token, callback) {
+                sinon.stub(strategy._oauth2, '_request').callsFake(function(method, url, headers, post_body, access_token, callback) {
                     headers.should.eql({
                         'Content-Type': 'application/x-www-form-urlencoded'
                     });
@@ -171,7 +171,7 @@ describe('SpotifyStrategy', function() {
     describe('when told to load user profile', function() {
         describe('on success', function() {
             before(function() {
-                sinon.stub(strategy._oauth2, '_request', function(method, url, headers, post_body, access_token, callback) {
+                sinon.stub(strategy._oauth2, '_request').callsFake(function(method, url, headers, post_body, access_token, callback) {
                     headers.should.eql({'Authorization': 'Bearer something'});
                     var body = JSON.stringify({
                         'id': 'spotifier',
@@ -240,7 +240,7 @@ describe('SpotifyStrategy', function() {
 
         describe('on incorrect JSON answer', function() {
             before(function() {
-                sinon.stub(strategy._oauth2, '_request', function(method, url, headers, post_body, access_token, callback) {
+                sinon.stub(strategy._oauth2, '_request').callsFake(function(method, url, headers, post_body, access_token, callback) {
                     headers.should.eql({'Authorization': 'Bearer something'});
                     var body = 'I\'m not a JSON, really!';
 
@@ -257,7 +257,7 @@ describe('SpotifyStrategy', function() {
 
         describe('on API GET error', function() {
             before(function() {
-                sinon.stub(strategy._oauth2, '_request', function(method, url, headers, post_body, access_token, callback) {
+                sinon.stub(strategy._oauth2, '_request').callsFake(function(method, url, headers, post_body, access_token, callback) {
                     headers.should.eql({'Authorization': 'Bearer something'});
                     callback(new Error('something-went-wrong'));
                 });
