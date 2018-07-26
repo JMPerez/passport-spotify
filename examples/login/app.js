@@ -1,11 +1,11 @@
 var express = require('express'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    methodOverride = require('method-override'),
-    session = require('express-session'),
-    passport = require('passport'),
-    swig = require('swig'),
-    SpotifyStrategy = require('../../lib/passport-spotify/index').Strategy;
+  bodyParser = require('body-parser'),
+  cookieParser = require('cookie-parser'),
+  methodOverride = require('method-override'),
+  session = require('express-session'),
+  passport = require('passport'),
+  swig = require('swig'),
+  SpotifyStrategy = require('../../lib/passport-spotify/index').Strategy;
 
 var consolidate = require('consolidate');
 
@@ -27,26 +27,29 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-
 // Use the SpotifyStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, expires_in 
+//   credentials (in this case, an accessToken, refreshToken, expires_in
 //   and spotify profile), and invoke a callback with a user object.
-passport.use(new SpotifyStrategy({
-  clientID: appKey,
-  clientSecret: appSecret,
-  callbackURL: 'http://localhost:8888/callback'
-  },
-  function(accessToken, refreshToken, expires_in, profile, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
-      // To keep the example simple, the user's spotify profile is returned to
-      // represent the logged-in user. In a typical application, you would want
-      // to associate the spotify account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile);
-    });
-  }));
+passport.use(
+  new SpotifyStrategy(
+    {
+      clientID: appKey,
+      clientSecret: appSecret,
+      callbackURL: 'http://localhost:8888/callback'
+    },
+    function(accessToken, refreshToken, expires_in, profile, done) {
+      // asynchronous verification, for effect...
+      process.nextTick(function() {
+        // To keep the example simple, the user's spotify profile is returned to
+        // represent the logged-in user. In a typical application, you would want
+        // to associate the spotify account with a user record in your database,
+        // and return that user instead.
+        return done(null, profile);
+      });
+    }
+  )
+);
 
 var app = express();
 
@@ -67,15 +70,15 @@ app.use(express.static(__dirname + '/public'));
 
 app.engine('html', consolidate.swig);
 
-app.get('/', function(req, res){
+app.get('/', function(req, res) {
   res.render('index.html', { user: req.user });
 });
 
-app.get('/account', ensureAuthenticated, function(req, res){
+app.get('/account', ensureAuthenticated, function(req, res) {
   res.render('account.html', { user: req.user });
 });
 
-app.get('/login', function(req, res){
+app.get('/login', function(req, res) {
   res.render('login.html', { user: req.user });
 });
 
@@ -84,31 +87,37 @@ app.get('/login', function(req, res){
 //   request. The first step in spotify authentication will involve redirecting
 //   the user to spotify.com. After authorization, spotify will redirect the user
 //   back to this application at /auth/spotify/callback
-app.get('/auth/spotify',
-  passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private'], showDialog: true}),
-  function(req, res){
-// The request will be redirected to spotify for authentication, so this
-// function will not be called.
-});
+app.get(
+  '/auth/spotify',
+  passport.authenticate('spotify', {
+    scope: ['user-read-email', 'user-read-private'],
+    showDialog: true
+  }),
+  function(req, res) {
+    // The request will be redirected to spotify for authentication, so this
+    // function will not be called.
+  }
+);
 
 // GET /auth/spotify/callback
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request. If authentication fails, the user will be redirected back to the
 //   login page. Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/callback',
+app.get(
+  '/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
-  });
+  }
+);
 
-app.get('/logout', function(req, res){
+app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
 
 app.listen(8888);
-
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
@@ -116,6 +125,8 @@ app.listen(8888);
 //   the request will proceed. Otherwise, the user will be redirected to the
 //   login page.
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+  if (req.isAuthenticated()) {
+    return next();
+  }
   res.redirect('/login');
 }
