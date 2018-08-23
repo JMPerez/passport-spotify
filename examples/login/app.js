@@ -1,7 +1,4 @@
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  cookieParser = require('cookie-parser'),
-  methodOverride = require('method-override'),
   session = require('express-session'),
   passport = require('passport'),
   swig = require('swig'),
@@ -57,10 +54,7 @@ var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.use(cookieParser());
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(session({ secret: 'keyboard cat' }));
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
 app.use(passport.initialize());
