@@ -31,7 +31,6 @@
     "test": "make coveralls"
   },
   "dependencies": {
-    "pkginfo": "~0.4.0",
     "passport-oauth": "1.0.0",
     "querystring": "~0.2.0",
     "util": "~0.11.0"
