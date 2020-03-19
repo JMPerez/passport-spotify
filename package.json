@@ -41,6 +41,6 @@
     "sinon": "7.4.2",
     "blanket": "~1.2.3",
     "mocha-lcov-reporter": "1.3.0",
-    "coveralls": "~3.0.0"
+    "coveralls": "~3.0.10"
   }
 }
