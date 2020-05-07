@@ -1,6 +1,6 @@
 var should = require('should');
 var sinon = require('sinon');
-var SpotifyStrategy = require('passport-spotify/strategy');
+var SpotifyStrategy = require('../lib/passport-spotify/strategy');
 
 describe('SpotifyStrategy', function() {
     var it_should_handle_errors = function() {
