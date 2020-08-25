@@ -33,7 +33,7 @@ passport.use(
     {
       clientID: appKey,
       clientSecret: appSecret,
-      callbackURL: "http://localhost:8888/callback",
+      callbackURL: "http://localhost:8888/auth/spotify/callback",
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
       // asynchronous verification, for effect...
@@ -101,7 +101,7 @@ app.get(
 //   login page. Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get(
-  "/callback",
+  "/auth/spotify/callback",
   passport.authenticate("spotify", { failureRedirect: "/login" }),
   function (req, res) {
     res.redirect("/");
