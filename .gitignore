@@ -1,3 +1,4 @@
+.env
 node_modules
 examples/login/node_modules
 test/coverage.html

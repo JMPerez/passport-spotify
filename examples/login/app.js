@@ -1,12 +1,11 @@
 var express = require("express"),
   session = require("express-session"),
   passport = require("passport"),
-  SpotifyStrategy = require("passport-spotify").Strategy;
+  SpotifyStrategy = require("passport-spotify").Strategy,
+  consolidate = require("consolidate");
 
-var consolidate = require("consolidate");
+require("dotenv").config();
 
-var appKey = "bb200fb215c346448b3c34bbccaac25d";
-var appSecret = "0902db0eb5274d4a8f3ec07d3d00d2c8";
 var port = 8888;
 var authCallbackPath = "/auth/spotify/callback";
 
@@ -32,8 +31,8 @@ passport.deserializeUser(function (obj, done) {
 passport.use(
   new SpotifyStrategy(
     {
-      clientID: appKey,
-      clientSecret: appSecret,
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
       callbackURL: "http://localhost:" + port + authCallbackPath,
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
