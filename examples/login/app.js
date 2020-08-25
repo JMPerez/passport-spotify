@@ -1,7 +1,6 @@
 var express = require("express"),
   session = require("express-session"),
   passport = require("passport"),
-  swig = require("swig"),
   SpotifyStrategy = require("passport-spotify").Strategy;
 
 var consolidate = require("consolidate");
@@ -54,7 +53,7 @@ var app = express();
 
 // configure Express
 app.set("views", __dirname + "/views");
-app.set("view engine", "ejs");
+app.set("view engine", "html");
 
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
@@ -66,7 +65,7 @@ app.use(passport.session());
 
 app.use(express.static(__dirname + "/public"));
 
-app.engine("html", consolidate.swig);
+app.engine("html", consolidate.nunjucks);
 
 app.get("/", function (req, res) {
   res.render("index.html", { user: req.user });

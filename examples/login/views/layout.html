@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	{% if !user %}
+	{% if not user %}
 	<p>
 		<a href="/">Home</a> |
 		<a href="/login">Log In</a>
@@ -17,7 +17,7 @@
 		<a href="/account">Account</a> |
 		<a href="/logout">Log Out</a>
 	</p>
-	{% endif %} {% block content %}
+	{% endif %} {% block content %}{% endblock %}
 </body>
 
 </html>
