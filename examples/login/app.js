@@ -8,6 +8,8 @@ var consolidate = require("consolidate");
 
 var appKey = "bb200fb215c346448b3c34bbccaac25d";
 var appSecret = "0902db0eb5274d4a8f3ec07d3d00d2c8";
+var port = 8888;
+var authCallbackPath = "/auth/spotify/callback";
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -33,7 +35,7 @@ passport.use(
     {
       clientID: appKey,
       clientSecret: appSecret,
-      callbackURL: "http://localhost:8888/auth/spotify/callback",
+      callbackURL: "http://localhost:" + port + authCallbackPath,
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
       // asynchronous verification, for effect...
@@ -101,7 +103,7 @@ app.get(
 //   login page. Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get(
-  "/auth/spotify/callback",
+  authCallbackPath,
   passport.authenticate("spotify", { failureRedirect: "/login" }),
   function (req, res) {
     res.redirect("/");
@@ -113,7 +115,7 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(8888);
+app.listen(port);
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
