@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-{% if !user %}
+{% if not user %}
 	<h2>Welcome! Please log in.</h2>
 	<p><a href="/login">login</a></p>
 {% else %}
