@@ -33,10 +33,10 @@ passport.use(
     {
       clientID: client_id,
       clientSecret: client_secret,
-      callbackURL: 'http://localhost:8888/auth/spotify/callback'
+      callbackURL: 'http://localhost:8888/auth/spotify/callback',
     },
-    function(accessToken, refreshToken, expires_in, profile, done) {
-      User.findOrCreate({ spotifyId: profile.id }, function(err, user) {
+    function (accessToken, refreshToken, expires_in, profile, done) {
+      User.findOrCreate({spotifyId: profile.id}, function (err, user) {
         return done(err, user);
       });
     }
@@ -57,8 +57,8 @@ app.get('/auth/spotify', passport.authenticate('spotify'));
 
 app.get(
   '/auth/spotify/callback',
-  passport.authenticate('spotify', { failureRedirect: '/login' }),
-  function(req, res) {
+  passport.authenticate('spotify', {failureRedirect: '/login'}),
+  function (req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
   }
@@ -80,7 +80,7 @@ You can specify the parameters in the `authenticate` call:
 app.get(
   '/auth/spotify',
   passport.authenticate('spotify', {
-    scope: ['user-read-email', 'user-read-private']
+    scope: ['user-read-email', 'user-read-private'],
   })
 );
 ```
@@ -94,7 +94,7 @@ app.get(
   '/auth/spotify',
   passport.authenticate('spotify', {
     scope: ['user-read-email', 'user-read-private'],
-    showDialog: true
+    showDialog: true,
   })
 );
 ```
@@ -108,11 +108,11 @@ You can get your keys on [Spotify - My Applications](https://developer.spotify.c
 ## Tests
 
     $ npm install --dev
-    $ make test
+    $ npm test
 
 ## Build and Coverage Status
 
-[![Build Status](https://travis-ci.org/JMPerez/passport-spotify.svg?branch=master)](https://travis-ci.org/JMPerez/passport-spotify) [![Coverage Status](https://coveralls.io/repos/JMPerez/passport-spotify/badge.png?branch=master)](https://coveralls.io/r/JMPerez/passport-spotify?branch=master)
+[![Actions Status](https://github.com/JMPerez/passport-spotify/workflows/build/badge.svg)](https://github.com/JMPerez/passport-spotify/actions)
 
 ## License
 

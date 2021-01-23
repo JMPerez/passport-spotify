@@ -19,16 +19,8 @@
     "url": "https://github.com/jmperez/passport-spotify/issues"
   },
   "main": "./lib/passport-spotify",
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "config": {
-    "blanket": {
-      "pattern": "//^(?!.*node_modules.*$).*lib//"
-    }
-  },
   "scripts": {
-    "test": "make coveralls"
+    "test": "mocha"
   },
   "dependencies": {
     "passport-oauth": "1.0.0",
@@ -36,11 +28,9 @@
     "util": "~0.12.0"
   },
   "devDependencies": {
-    "mocha": "5.2.0",
+    "mocha": "^8.2.1",
     "should": "13.2.3",
-    "sinon": "7.4.2",
-    "blanket": "~1.2.3",
-    "mocha-lcov-reporter": "1.3.0",
-    "coveralls": "~3.1.0"
-  }
+    "sinon": "7.4.2"
+  },
+  "license": "MIT"
 }
